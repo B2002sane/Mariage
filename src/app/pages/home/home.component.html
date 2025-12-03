@@ -165,156 +165,16 @@
 </div>
 <!-- Date du Mariage -->
 
+<div *ngIf="inviteData; else loading">
+  <h2>Invitation pour {{ inviteData.name }}</h2>
+  <canvas id="inviteCanvas"></canvas>
+</div>
+
+<ng-template #loading>
+  <p>Chargement de l'invitation...</p>
+</ng-template>
 
 
-
-<!-- Début de la Galerie -->
-<!-- <div class="container-fluid gallery position-relative py-5" id="weddingGallery">
-    <div class="position-absolute" style="top: -95px; right: 0;">
-        <img src="assets/template/img/tamp-bg-1.png" class="img-fluid" alt="">
-    </div>
-    <div class="position-absolute" style="top: -80px; left: 0; transform: rotate(150deg);">
-        <img src="assets/template/img/tamp-bg-1.png" class="img-fluid" alt="">
-    </div>
-    <div class="container position-relative py-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-2 text-dark">Galerie du Mariage</h1>
-            <p class="fs-5 text-dark">Quelques moments précieux de notre parcours ensemble</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-1.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-1.jpg" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Fiançailles à Dakar</h5>
-                        <p class="text-dark mb-0">20 Octobre 2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-2.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-2.jpg" data-lightbox="Gallery-2" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Sur la Corniche</h5>
-                        <p class="text-dark mb-0">15 Février 2020</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-3.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-3.jpg" data-lightbox="Gallery-3" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Plage de Ngor</h5>
-                        <p class="text-dark mb-0">14 Juin 2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-4.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-4.jpg" data-lightbox="Gallery-4" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Sortie en Famille</h5>
-                        <p class="text-dark mb-0">5 Mai 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-5.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-5.jpg" data-lightbox="Gallery-5" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Anniversaire d'Amina</h5>
-                        <p class="text-dark mb-0">12 Mars 2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-6.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-6.jpg" data-lightbox="Gallery-6" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Vacances à Saint-Louis</h5>
-                        <p class="text-dark mb-0">Août 2021</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-7.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-7.jpg" data-lightbox="Gallery-7" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Dîner Romantique</h5>
-                        <p class="text-dark mb-0">14 Février 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                <div class="gallery-item">
-                    <div class="gallery-img">
-                        <img class="img-fluid w-100" src="assets/template/img/gallery-8.jpg" alt="">
-                        <div class="hover-style"></div>
-                        <div class="search-icon">
-                            <a href="assets/template/img/gallery-8.jpg" data-lightbox="Gallery-8" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>Cérémonie de Kholé</h5>
-                        <p class="text-dark mb-0">15 Novembre 2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
-                <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="#">Voir Tout <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- Fin de la Galerie -->
-<div class="grid">
-      <div *ngFor="let invite of invites" class="invite-card">
-        <h4>{{invite.pseudo}} (N°{{invite.invite_number}})</h4>
-        <canvas [id]="'canvas' + invite.invite_number"></canvas>
-      </div>
-    </div>
 
 <!-- Début du Formulaire RSVP -->
 <div class="container-fluid RSVP-form py-5" id="weddingRsvp">

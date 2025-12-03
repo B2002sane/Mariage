@@ -1,7 +1,8 @@
 import { Component, AfterViewChecked } from '@angular/core';
-import { supabase } from '../../supabase.client';
+import { ActivatedRoute } from '@angular/router';
 import QRCode from 'qrcode';
 import { CommonModule } from '@angular/common';
+import { supabase } from '../../supabase.client';
 
 @Component({
   selector: 'app-home',
@@ -12,37 +13,46 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements AfterViewChecked {
 
-  invites: any[] = [];
-  private qrcodesGenerated = false;
+  token: string | null = null;
+  inviteData: any = null;
+  private qrGenerated = false;
 
-  constructor() {
-    this.loadInvites();
+  constructor(private route: ActivatedRoute) {
+    // Récupérer le token depuis l'URL
+    this.token = this.route.snapshot.queryParamMap.get('token');
+    if (this.token) {
+      this.loadInvite();
+    }
   }
 
-  async loadInvites() {
-    const { data, error } = await supabase.from('invites').select('*');
-    if (error) { console.error(error); return; }
-    this.invites = data;
+  async loadInvite() {
+    const { data, error } = await supabase
+      .from('invites')
+      .select('*')
+      .eq('token', this.token)
+      .single(); // récupère un seul enregistrement
+
+    if (error) {
+      console.error('Erreur Supabase :', error);
+      return;
+    }
+
+    this.inviteData = data;
   }
 
   ngAfterViewChecked() {
-    // Attendre que invites soit chargé et que les canvas soient rendus
-    if (this.invites.length && !this.qrcodesGenerated) {
-
-      this.invites.forEach(invite => {
-        const canvas = document.getElementById('canvas' + invite.invite_number);
-
-        if (canvas) {
-          QRCode.toCanvas(
-            canvas,
-            `http://localhost:4200/invite?token=${invite.token}`,
-            { width: 150 },
-            (err) => { if (err) console.error(err); }
-          );
-        }
-      });
-
-      this.qrcodesGenerated = true; // éviter de générer plusieurs fois
+    // Générer le QR code après que le canvas soit rendu
+    if (this.inviteData && !this.qrGenerated) {
+      const canvas = document.getElementById('inviteCanvas');
+      if (canvas) {
+        QRCode.toCanvas(
+          canvas,
+          `https://mouhamed-aminata.netlify.app/invite?token=${this.token}`,
+          { width: 200 },
+          (err) => { if (err) console.error(err); }
+        );
+        this.qrGenerated = true;
+      }
     }
   }
 }

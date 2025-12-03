@@ -1,0 +1,7 @@
+<h1>Invitations Au Mariage de Mouhamed & Aminata</h1>
+<div class="grid">
+    <div *ngFor="let invite of invites" class="invite-card">
+        <h4>{{invite.pseudo}} (N°{{invite.invite_number}})</h4>
+        <canvas [id]="'canvas' + invite.invite_number"></canvas>
+    </div>
+</div>
