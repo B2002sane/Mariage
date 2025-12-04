@@ -48,7 +48,7 @@ export class HomeComponent implements AfterViewChecked {
         QRCode.toCanvas(
           canvas,
           `https://mouhamed-aminata.netlify.app/invite?token=${this.token}`,
-          { width: 200 },
+          { width: 400 },
           (err) => { if (err) console.error(err); }
         );
         this.qrGenerated = true;

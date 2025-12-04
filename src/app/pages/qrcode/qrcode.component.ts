@@ -36,7 +36,7 @@ export class QrcodeComponent implements AfterViewChecked {
           if (canvas) {
             QRCode.toCanvas(
               canvas,
-              `https://mouhamed-aminata.netlify.app/invite?token=${invite.token}`,
+              `https://mouhamed-aminata.netlify.app/?token=${invite.token}`,
               { width: 150 },
               (err) => { if (err) console.error(err); }
             );
