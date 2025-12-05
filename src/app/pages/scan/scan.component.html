@@ -1,0 +1,11 @@
+<h2>Scanner un QR code</h2>
+
+<video #preview width="300" height="300"></video>
+
+<div *ngIf="message" class="result">
+  {{ message }}
+</div>
+
+<button *ngIf="!scanning" (click)="restartScanner()">
+  Scanner un autre QR
+</button>
